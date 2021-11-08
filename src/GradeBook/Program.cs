@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace GradeBook
 {
     class Program
@@ -7,16 +7,18 @@ namespace GradeBook
         static void Main(string[] args)
         {
 
-            var numbers = new double [3];
-            numbers[0] = 12.7;
-            numbers[1] = 10.3;
-            numbers[2] = 6.11;
+            var numbers = new [] {12.7, 10.3, 6.11 };
+            var grades = new List<double>() {12.7, 10.3, 6.11 };
+            grades.Add(56.1);
 
-            var result = numbers[0];
-            result = result + numbers[1];
-            result = result + numbers[2];
-            Console.WriteLine(result);
-
+            var result = 0.0; 
+            foreach (double number in grades)
+            {
+                 result += number;
+            }
+            result /= grades.Count;
+            Console.WriteLine($"The averge grade is, {result:N1}");
+            
            if (args.Length > 0)
            {
             Console.WriteLine($"Hello, {args[0]}!");
